@@ -2,7 +2,12 @@
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Repositories" removed="false">
+          <dependency>spring_boot_com.uoit.network.supeasy.SupeasyApplication</dependency>
+          <file>file://$MODULE_DIR$/src/main/resources/repositories.xml</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="web" name="Web">
       <configuration>
@@ -36,7 +41,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
@@ -77,7 +81,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web-services:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.4" level="project" />
@@ -91,7 +94,11 @@
     <orderEntry type="library" name="Maven: org.glassfish:jakarta.el:3.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.41" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web-services:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.messaging.saaj:saaj-impl:1.5.2" level="project" />
     <orderEntry type="library" name="Maven: jakarta.xml.soap:jakarta.xml.soap-api:1.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.jvnet.staxex:stax-ex:1.8.3" level="project" />
@@ -99,10 +106,8 @@
     <orderEntry type="library" name="Maven: jakarta.xml.ws:jakarta.xml.ws-api:2.3.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: jakarta.jws:jakarta.jws-api:2.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-oxm:5.3.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.ws:spring-ws-core:3.0.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.ws:spring-xml:3.0.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.6" level="project" />
@@ -128,5 +133,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:8.0.22" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework.boot:spring-boot-devtools:2.4.2" level="project" />
   </component>
 </module>

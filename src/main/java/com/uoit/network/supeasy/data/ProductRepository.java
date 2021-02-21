@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ProductRepository extends CrudRepository<ProductDO,Integer> {
     List<ProductDO> findAllByStoreId(Integer storeId);
+
+    ProductDO findByStoreIdAndName(Integer storeId,String name);
 }

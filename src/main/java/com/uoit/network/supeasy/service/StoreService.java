@@ -1,9 +1,10 @@
 package com.uoit.network.supeasy.service;
 
+import com.uoit.network.supeasy.model.Result;
 import com.uoit.network.supeasy.model.StoreInfo;
 
 public interface StoreService {
-    Integer addStore(StoreInfo storeInfo);
+    Result<Integer> addStore(StoreInfo storeInfo);
 
-    StoreInfo getStoreByName(String name);
+    Result<StoreInfo> getStoreByName(String name);
 }

@@ -1,16 +1,17 @@
 package com.uoit.network.supeasy.service;
 
 import com.uoit.network.supeasy.model.ProductInfo;
+import com.uoit.network.supeasy.model.Result;
 
 import java.util.List;
 
 public interface ProductService {
-    List<ProductInfo> getProductsByStoreId(Integer storeId);
+    Result<List<ProductInfo>> getProductsByStoreId(Integer storeId);
 
-    Integer addProduct(ProductInfo productInfo);
+    Result<Integer> addProduct(ProductInfo productInfo);
 
-    ProductInfo getProductById(Integer id);
+    Result<ProductInfo> getProductById(Integer id);
 
-    ProductInfo getProductByNameAndStoreId(String name, Integer storeId);
+    Result<ProductInfo> getProductByStoreIdAndName(Integer storeId,String name);
 
 }

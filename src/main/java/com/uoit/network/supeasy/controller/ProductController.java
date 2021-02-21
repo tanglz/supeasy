@@ -1,6 +1,8 @@
 package com.uoit.network.supeasy.controller;
 
+import com.uoit.network.supeasy.interceptor.LoginRequired;
 import com.uoit.network.supeasy.model.ProductInfo;
+import com.uoit.network.supeasy.model.Result;
 import com.uoit.network.supeasy.model.StoreInfo;
 import com.uoit.network.supeasy.service.ProductService;
 import com.uoit.network.supeasy.service.StoreService;
@@ -18,8 +20,10 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/add")
-    public @ResponseBody Integer add(@RequestParam String name, @RequestParam String imgUrl,
-                @RequestParam String description, @RequestParam Integer storeId){
+    @LoginRequired
+    @ResponseBody
+    public Result<Integer> add(@RequestParam String name, @RequestParam String imgUrl,
+                              @RequestParam String description, @RequestParam Integer storeId){
         ProductInfo productInfo=new ProductInfo();
         productInfo.setImageUrl(imgUrl);
         productInfo.setDescription(description);
@@ -29,7 +33,9 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public @ResponseBody List<ProductInfo> get(@RequestParam Integer storeId){
+    @LoginRequired
+    @ResponseBody
+    public Result<List<ProductInfo>> get(@RequestParam Integer storeId){
         return productService.getProductsByStoreId(storeId);
     }
 }

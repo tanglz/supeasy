@@ -1,0 +1,19 @@
+{
+  "groups": [
+    {
+      "name": "storage",
+      "type": "com.uoit.network.supeasy.service.StorageProperties",
+      "sourceType": "com.uoit.network.supeasy.service.StorageProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "storage.location",
+      "type": "java.lang.String",
+      "description": "Folder location for storing files",
+      "sourceType": "com.uoit.network.supeasy.service.StorageProperties",
+      "defaultValue": "upload-dir"
+    }
+  ],
+  "hints": []
+}

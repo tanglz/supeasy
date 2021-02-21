@@ -19,6 +19,17 @@ public class UserDO {
 
     private String password;
 
+    /**
+     * store
+     */
+
+    private String storeName;
+
+    private String address;
+
+    private String description;
+
+
     public Integer getId() {
         return id;
     }
@@ -57,5 +68,29 @@ public class UserDO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

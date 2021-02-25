@@ -1,12 +1,38 @@
 {
   "groups": [
     {
+      "name": "audience",
+      "type": "com.uoit.network.supeasy.model.JwtUser",
+      "sourceType": "com.uoit.network.supeasy.model.JwtUser"
+    },
+    {
       "name": "storage",
       "type": "com.uoit.network.supeasy.service.StorageProperties",
       "sourceType": "com.uoit.network.supeasy.service.StorageProperties"
     }
   ],
   "properties": [
+    {
+      "name": "audience.base64-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.uoit.network.supeasy.model.JwtUser"
+    },
+    {
+      "name": "audience.client-id",
+      "type": "java.lang.String",
+      "sourceType": "com.uoit.network.supeasy.model.JwtUser"
+    },
+    {
+      "name": "audience.expires-second",
+      "type": "java.lang.Integer",
+      "sourceType": "com.uoit.network.supeasy.model.JwtUser",
+      "defaultValue": 0
+    },
+    {
+      "name": "audience.name",
+      "type": "java.lang.String",
+      "sourceType": "com.uoit.network.supeasy.model.JwtUser"
+    },
     {
       "name": "storage.location",
       "type": "java.lang.String",

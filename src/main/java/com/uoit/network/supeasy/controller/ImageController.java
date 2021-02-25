@@ -1,6 +1,5 @@
 package com.uoit.network.supeasy.controller;
 
-import com.uoit.network.supeasy.interceptor.LoginRequired;
 import com.uoit.network.supeasy.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -11,28 +10,33 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 @Controller
-@RequestMapping("/image")
+@RequestMapping("/api/image")
 public class ImageController {
 
     @Autowired
     private StorageService storageService;
-
     @PostMapping("/upload")
     @ResponseBody
-    @LoginRequired
-    public String upload(@RequestParam("file") MultipartFile file,
-                         RedirectAttributes redirectAttributes){
+    public Map<String,String> upload(@RequestParam("file") MultipartFile file,
+                                     RedirectAttributes redirectAttributes){
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-        return "redirect:/";
+        Map<String,String> result=new HashMap<>();
+        result.put("name",file.getOriginalFilename());
+        result.put("uid",UUID.randomUUID().toString());
+        result.put("status","done");
+        result.put("url","http://springbootsupeasy-env.eba-wk98fipi.us-east-1.elasticbeanstalk.com/api/image/files/"+file.getOriginalFilename());
+        return result;
     }
 
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
-    @LoginRequired
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 
         Resource file = storageService.loadAsResource(filename);

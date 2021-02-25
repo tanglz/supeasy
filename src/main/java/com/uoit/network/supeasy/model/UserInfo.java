@@ -1,6 +1,7 @@
 package com.uoit.network.supeasy.model;
 
 public class UserInfo {
+
     private Integer id;
 
     private String name;

@@ -1,41 +1,37 @@
 package com.uoit.network.supeasy.controller;
 
-import com.uoit.network.supeasy.interceptor.LoginRequired;
 import com.uoit.network.supeasy.model.ProductInfo;
 import com.uoit.network.supeasy.model.Result;
-import com.uoit.network.supeasy.model.StoreInfo;
 import com.uoit.network.supeasy.service.ProductService;
-import com.uoit.network.supeasy.service.StoreService;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/api/product")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
     @PostMapping("/add")
-    @LoginRequired
     @ResponseBody
-    public Result<Integer> add(@RequestParam String name, @RequestParam String imgUrl,
-                              @RequestParam String description, @RequestParam Integer storeId){
-        ProductInfo productInfo=new ProductInfo();
-        productInfo.setImageUrl(imgUrl);
-        productInfo.setDescription(description);
-        productInfo.setName(name);
-        productInfo.setStoreId(storeId);
+    public Result<Integer> add(@RequestBody ProductInfo productInfo , HttpServletRequest request){
+        Claims claims = (Claims) request.getAttribute("claims");
+
+        productInfo.setStoreId(Integer.parseInt(String.valueOf(claims.get("userid"))));
         return productService.addProduct(productInfo);
     }
 
     @GetMapping("/all")
-    @LoginRequired
     @ResponseBody
-    public Result<List<ProductInfo>> get(@RequestParam Integer storeId){
-        return productService.getProductsByStoreId(storeId);
+    public Result<List<ProductInfo>> get(HttpServletRequest request){
+        Claims claims = (Claims) request.getAttribute("claims");
+
+        return productService.getProductsByStoreId(Integer.parseInt(String.valueOf(claims.get("userid"))));
     }
 }

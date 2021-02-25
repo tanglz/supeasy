@@ -1,6 +1,4 @@
 package com.uoit.network.supeasy.controller;
-
-import com.uoit.network.supeasy.model.JwtUser;
 import com.uoit.network.supeasy.model.Result;
 import com.uoit.network.supeasy.model.UserInfo;
 import com.uoit.network.supeasy.service.AccountService;
@@ -8,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
-
 import com.uoit.network.supeasy.util.JwtHelper;
 
 import java.util.Date;
@@ -20,9 +15,6 @@ import java.util.Map;
 @Controller
 @RequestMapping(path = "/api/user")
 public class UserController {
-    @Autowired
-    private JwtUser jwtUser;
-    public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
     @Autowired
     private AccountService accountService;
@@ -40,7 +32,6 @@ public class UserController {
     }
 
     @GetMapping(path = "/get")
-    @CrossOrigin(origins = "http://54.87.170.217")
     @ResponseBody
     public Result<UserInfo> getUser(@RequestParam String name) {
         if (name.isEmpty()) {
@@ -51,7 +42,6 @@ public class UserController {
 
     @PostMapping(path = "/register_store")
     @ResponseBody
-    @CrossOrigin(origins = "http://54.87.170.217")
     public Result<Integer> registerAndStore(@RequestBody UserInfo userInfo) {
         String password=userInfo.getPassword();
         String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());
@@ -83,7 +73,7 @@ public class UserController {
                 user.getObject().getId().toString(),
                 "098f6bcd4621d373cade4e832627b4f6",
                 "api",
-                172800*1000,
+                3600*1000, //1 hours
                 "MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=");
 
         map.put("token",jwtToken);

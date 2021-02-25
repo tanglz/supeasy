@@ -2,6 +2,8 @@ package com.uoit.network.supeasy.service.impl;
 
 import com.uoit.network.supeasy.service.StorageProperties;
 import com.uoit.network.supeasy.service.StorageService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -19,6 +21,8 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class StorageServiceImpl implements StorageService {
 
+    private static Logger logger = LoggerFactory.getLogger(StorageServiceImpl.class);
+
     private final Path rootLocation;
 
     @Autowired
@@ -32,8 +36,7 @@ public class StorageServiceImpl implements StorageService {
         try {
             Files.createDirectories(rootLocation);
         } catch (IOException e) {
-            //TODO
-
+            logger.error(e.getMessage());
         }
     }
 
@@ -47,7 +50,6 @@ public class StorageServiceImpl implements StorageService {
                     Paths.get(file.getOriginalFilename()))
                     .normalize().toAbsolutePath();
             if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
-                // This is a security check
                 return;
             }
             try (InputStream inputStream = file.getInputStream()) {
@@ -55,7 +57,7 @@ public class StorageServiceImpl implements StorageService {
                         StandardCopyOption.REPLACE_EXISTING);
             }
         } catch (IOException e) {
-            //TODO
+            logger.error(e.getMessage());
         }
     }
 
@@ -76,7 +78,7 @@ public class StorageServiceImpl implements StorageService {
                 return null;
             }
         } catch (MalformedURLException e) {
-            //TODO
+            logger.error(e.getMessage());
             return null;
         }
     }

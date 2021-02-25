@@ -31,7 +31,7 @@ public class ImageController {
         result.put("name",file.getOriginalFilename());
         result.put("uid",UUID.randomUUID().toString());
         result.put("status","done");
-        result.put("url","http://springbootsupeasy-env.eba-wk98fipi.us-east-1.elasticbeanstalk.com/api/image/files/"+file.getOriginalFilename());
+        result.put("url",file.getOriginalFilename());
         return result;
     }
 

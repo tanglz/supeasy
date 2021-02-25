@@ -6,6 +6,8 @@ import com.uoit.network.supeasy.model.ProductInfo;
 import com.uoit.network.supeasy.model.Result;
 import com.uoit.network.supeasy.service.ProductService;
 import com.uoit.network.supeasy.util.ConvertUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -17,7 +19,7 @@ import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-
+    private static Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
     @Autowired
     private ProductRepository productRepository;
 
@@ -43,6 +45,7 @@ public class ProductServiceImpl implements ProductService {
             result.setStatus(false);
             result.setErrorCode("E_SYS");
             result.setErrorMessage(e.getMessage());
+            logger.error(e.getMessage());
         }
         return result;
     }
@@ -77,6 +80,7 @@ public class ProductServiceImpl implements ProductService {
             result.setStatus(false);
             result.setErrorCode("E_SYS");
             result.setErrorMessage(e.getMessage());
+            logger.error(e.getMessage());
         }
         return result;
     }
@@ -106,6 +110,7 @@ public class ProductServiceImpl implements ProductService {
             result.setStatus(false);
             result.setErrorCode("E_SYS");
             result.setErrorMessage(e.getMessage());
+            logger.error(e.getMessage());
         }
         return result;
     }
